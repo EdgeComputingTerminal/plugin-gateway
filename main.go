@@ -52,6 +52,7 @@ func init() {
 func run() {
 	http.HandleFunc("/api/sysInfo", sysInfo)
 	http.HandleFunc("/api/stop", stopPublish)
+	http.HandleFunc("/api/esists", exists)
 	http.HandleFunc("/api/summary", summary)
 	http.HandleFunc("/api/config", getConfig)
 	http.HandleFunc("/api/plugins", getPlugins)
@@ -331,5 +332,16 @@ func modifyConfig(w http.ResponseWriter, r *http.Request) {
 		}
 	} else {
 		w.Write([]byte("no query name"))
+	}
+}
+func exists(w http.ResponseWriter, r *http.Request) {
+	if streamPath := r.URL.Query().Get("stream"); streamPath != "" {
+		if stream := FindStream(streamPath); stream != nil {
+			w.Write([]byte("success"))
+		} else {
+			w.Write([]byte("no such stream"))
+		}
+	} else {
+		w.Write([]byte("no query stream"))
 	}
 }
