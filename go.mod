@@ -1,4 +1,4 @@
-module github.com/Monibuca/plugin-gateway
+module github.com/EdgeComputingTerminal/plugin-gateway
 
 go 1.16
 
