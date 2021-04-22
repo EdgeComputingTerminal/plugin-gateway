@@ -52,7 +52,7 @@ func init() {
 func run() {
 	http.HandleFunc("/api/sysInfo", sysInfo)
 	http.HandleFunc("/api/stop", stopPublish)
-	http.HandleFunc("/api/esists", exists)
+	http.HandleFunc("/api/exists", exists)
 	http.HandleFunc("/api/summary", summary)
 	http.HandleFunc("/api/config", getConfig)
 	http.HandleFunc("/api/plugins", getPlugins)
